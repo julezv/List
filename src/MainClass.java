@@ -30,7 +30,7 @@ public class MainClass {
         //System.out.println(myList);
        // System.out.println(invertList(myList));
         System.out.println(myList.size());
-        myList.add(5);
+        myList.add(9);
 //        System.out.println(myList.size());
 //        System.out.println(myList.indexOf(5));
 //        System.out.println(myList.indexOf(6));
@@ -38,7 +38,7 @@ public class MainClass {
 //        System.out.println(myList.get(2).data);
 //        System.out.println(myList.get(20));
 
-        myList.delete(3);
+        myList.deleteElem(8);
         System.out.println(myList);
 
     }

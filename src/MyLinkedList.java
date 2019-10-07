@@ -41,12 +41,39 @@ public class MyLinkedList {
         }
         else if (currNode == tail){
             tail = this.get(ind -1);
-            currNode =  null;
+            tail.next = null;
         }
         else{
             this.get(ind -1).next = this.get(ind+1);
         }
         size--;
+        return currNode;
+    }
+
+
+    public Node deleteElem(int elem) {
+        Node currNode = head;
+        for (int i = 0; i < this.size(); i++) {
+            if (currNode.data == elem) {
+                if (currNode == head) {
+                    head = currNode.next;
+                    size--;
+                    break;
+                } else if (currNode == tail) {
+                    tail = this.get(i-1);
+                    tail.next = null;
+                    size--;
+                    break;
+                } else {
+                    this.get(i - 1).next = this.get(i + 1);
+                    size--;
+                    break;
+                }
+
+            }
+            currNode = currNode.next;
+
+        }
         return currNode;
     }
 
