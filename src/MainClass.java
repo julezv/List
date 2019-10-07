@@ -38,7 +38,7 @@ public class MainClass {
 //        System.out.println(myList.get(2).data);
 //        System.out.println(myList.get(20));
 
-        myList.deleteElem(8);
+        myList.deleteElem(9);
         System.out.println(myList);
 
     }

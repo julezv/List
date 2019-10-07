@@ -57,19 +57,14 @@ public class MyLinkedList {
             if (currNode.data == elem) {
                 if (currNode == head) {
                     head = currNode.next;
-                    size--;
-                    break;
                 } else if (currNode == tail) {
                     tail = this.get(i-1);
                     tail.next = null;
-                    size--;
-                    break;
                 } else {
                     this.get(i - 1).next = this.get(i + 1);
-                    size--;
-                    break;
                 }
-
+                size--;
+                break;
             }
             currNode = currNode.next;
 
