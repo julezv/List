@@ -20,14 +20,6 @@ public class MyLinkedList {
     }
 
     public int size(){
-        size = 0;
-        if (head == null)
-            return 0;
-        Node currNode = head;
-        while (currNode != null) {
-            size++;
-            currNode = currNode.next;
-        }
         return size;
     }
 
@@ -104,6 +96,18 @@ public class MyLinkedList {
         }
         return currNode;
     }
+
+    public void reverse() {
+        Node currNode = tail;
+        Node endNode = tail;
+        for (int i = size -2; i >=0; i--) {
+            this.add(this.get(i).data);
+            currNode= currNode.next;
+        }
+        head = endNode;
+        tail = currNode;
+    }
+
 
     @Override
     public String toString() {
