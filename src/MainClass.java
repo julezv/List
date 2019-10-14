@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -40,6 +41,29 @@ public class MainClass {
 
         myList.deleteElem(9);
         System.out.println(myList);
+
+        int[] a = {0, 2, 4, 4, 15, 18, 43}; //O(log_2 n)
+        System.out.println(Arrays.toString(a));
+        int len = a.length;
+        int ind1 = len / 2 - 1;
+        int ind2 = len / 2;
+        if (len % 2 != 0){
+            ind2++;
+        }
+
+        for (int i = 0; i < len / 2; i++) {
+            int temp = a[ind1 - i];
+            a[ind1 - i] = a[ind2 + i];
+            a[ind2 + i] = temp;
+        }
+
+        System.out.println(Arrays.toString(a));
+
+
+        int c = 5, d = 7;
+        int temp = c;
+        c = d;
+        d = temp;
 
     }
 

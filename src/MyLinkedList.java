@@ -61,7 +61,7 @@ public class MyLinkedList {
             currNode = currNode.next;
 
         }
-        return currNode;
+        return currNode; //w/o get(i)
     }
 
     public Node find(int elem){
@@ -100,10 +100,10 @@ public class MyLinkedList {
     public void reverse() {
         Node currNode = tail;
         Node endNode = tail;
-        for (int i = size -2; i >=0; i--) {
+        for (int i = size - 2; i >=0; i--) {
             this.add(this.get(i).data);
             currNode= currNode.next;
-        }
+        } //O(n^2)
         head = endNode;
         tail = currNode;
     }
