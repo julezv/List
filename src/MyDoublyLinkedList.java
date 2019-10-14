@@ -14,6 +14,7 @@ private int size = 0;
         } else {
             tail.next = newNode;
             newNode.prev = tail;
+            newNode.next = null;
             tail = tail.next;
         }
         size++;
@@ -25,16 +26,16 @@ private int size = 0;
     }
 
     public DoubleNode delete(int ind){
+        DoubleNode currNode;
 
         if(ind == size -1){
-            DoubleNode currNode = tail;
+            currNode = tail;
             tail = tail.prev;
             tail.next = null;
-            size = size - 1;
+            size--;
             return currNode;
         }
 
-        DoubleNode currNode;
         if (ind > this.size() -1){
             return null;
         }
@@ -47,21 +48,26 @@ private int size = 0;
             }
         }else {
              currNode = tail;
-            int i = size - 1;
+            int i = size - 2;
             while (ind > i) {
                 currNode = currNode.prev;
                 i--;
             }
         }
 
-        currNode.prev = currNode.next;
-        size --;
+        DoubleNode temp = currNode.prev;
+        temp.next = currNode.next;
+        temp = currNode.next;
+        temp.prev = currNode.prev;
+        size--;
         return currNode;
     }
 
     public DoubleNode deleteElem(int elem) {
 
         DoubleNode currNode = find(elem);
+
+        System.out.println(currNode.data);
 
         if (currNode == null) {
             return null;
@@ -70,14 +76,19 @@ private int size = 0;
         DoubleNode previous = currNode.prev;
         DoubleNode next = currNode.next;
 
+
+
         if (previous == null) {
-            this.head = currNode.next;
-            this.head.prev = null;
+            System.out.println(previous);
+            // we are at head, shift head right
+            head = currNode.next;
+            head.prev = null;
         }
 
-        if (next == null) {
-            this.tail = currNode.prev;
-            this.tail.next = null;
+        else if (next == null) {
+            //we are at tail, shift left
+            tail = currNode.prev;
+            tail.next = null;
         }
 
         else {
@@ -86,7 +97,7 @@ private int size = 0;
             temp = currNode.next;
             temp.prev = currNode.prev;
         }
-
+        size--;
         return currNode;
     }
 
@@ -133,7 +144,17 @@ private int size = 0;
         }
 
         public void reverse() {
+            DoubleNode currNode = head;
 
+            for (int i = 0; i < size -1; i++) {
+                DoubleNode temp = currNode;
+                currNode.prev = currNode.next;
+                currNode.next = temp.prev;
+                currNode = currNode.prev;
+            }
+            DoubleNode temp = head;
+            head = tail;
+            tail = temp;
         }
 
 
