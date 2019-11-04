@@ -75,9 +75,6 @@ private int size = 0;
 
         DoubleNode previous = currNode.prev;
         DoubleNode next = currNode.next;
-
-
-
         if (previous == null) {
             System.out.println(previous);
             // we are at head, shift head right
@@ -143,20 +140,21 @@ private int size = 0;
         return currNode;
         }
 
-        public void reverse() {
+    public void reverse() {
             DoubleNode currNode = head;
-
-            for (int i = 0; i < size -1; i++) {
-                DoubleNode temp = currNode;
-                currNode.prev = currNode.next;
-                currNode.next = temp.prev;
-                currNode = currNode.prev;
+            DoubleNode next;
+            next = currNode.next;
+            currNode.next = null;
+            currNode.prev = next;
+            tail = head;
+            while(next != null){
+                next.prev = next.next;
+                next.next = currNode;
+                currNode = next;
+                next = next.prev;
             }
-            DoubleNode temp = head;
-            head = tail;
-            tail = temp;
+            head = currNode;
         }
-
 
         @Override
         public String toString() {

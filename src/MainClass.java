@@ -65,9 +65,14 @@ public class MainClass {
         c = d;
         d = temp;
 
+        System.out.println(myList);
+        myList.iterativeReverse();
+        System.out.println(myList);
+        myList.deleteByIndex(2);
+        System.out.println(myList);
+
+
     }
 
-    public static MyLinkedList invertList(MyLinkedList list) {
-        return null;
-    }
+
 }

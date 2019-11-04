@@ -23,23 +23,24 @@ public class MyLinkedList {
         return size;
     }
 
-    public Node delete(int ind){
+    public Node deleteByIndex(int ind){
+        Node temp = head;
         if (ind > this.size() -1){
             return null;
         }
-        Node currNode = this.get(ind);
-        if(currNode == head){
-            head = this.get(ind +1);
+        else if (ind == 0){
+            head = temp.next;
         }
-        else if (currNode == tail){
-            tail = this.get(ind -1);
-            tail.next = null;
+
+        for (int i = 0; i < ind -1 ; i++) {
+            temp = temp.next;
         }
-        else{
-            this.get(ind -1).next = this.get(ind+1);
+        if(ind == size -1){
+            tail = temp;
         }
-        size--;
-        return currNode;
+        Node temp2 = temp.next;
+        temp.next = temp2.next;
+        return temp;
     }
 
 
@@ -97,28 +98,19 @@ public class MyLinkedList {
         return currNode;
     }
 
-//    public void reverse() {
-//        Node currNode = tail;
-//        Node endNode = tail;
-//        for (int i = size - 2; i >=0; i--) {
-//            this.add(this.get(i).data);
-//            currNode= currNode.next;
-//        } //O(n^2)
-//        head = endNode;
-//        tail = currNode;
-//    }
 
-    public  void reverse() {
-        Node previous = null;
-        Node currNode = head;
-        Node next;
-        while (currNode != null) {
-            next = currNode.next;
-            currNode.next = previous;
-            previous = currNode;
-            currNode = next;
-        }
-        head = previous;
+    public  void iterativeReverse() {
+       Node currNode = head;
+       Node prev = null;
+       Node next;
+       tail = head;
+       while(currNode != null){
+           next = currNode.next;
+           currNode.next = prev;
+           prev = currNode;
+           currNode = next;
+       }
+       head = prev;
     }
 
 
